@@ -14,7 +14,6 @@ class GridManagerTest {
 	@BeforeEach
 	public void setup() {
 		manager = GridManager.getInstance();
-		manager.newBoard();
 	}
 	
 	@Test

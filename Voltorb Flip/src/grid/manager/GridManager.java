@@ -1,8 +1,6 @@
 package grid.manager;
 
 import grid.board.Board;
-import grid.cells.GridCell;
-import grid.cells.NumberCell;
 
 public class GridManager {
 	private static GridManager instance;
@@ -11,7 +9,7 @@ public class GridManager {
 	
 	private GridManager() {
 		score = 0;
-		newBoard();
+		newBoard(1);
 	}
 	
 	public static GridManager getInstance() {
@@ -21,8 +19,8 @@ public class GridManager {
 		return instance;
 	}
 
-	public void newBoard() {
-		board = new Board(this);
+	public void newBoard(int level) {
+		board = new Board(this, level);
 	}
 	
 	/**Returns the {@link Board} currently in play
@@ -47,5 +45,10 @@ public class GridManager {
 	
 	public void flipCell(int row, int column) {
 		board.flipCell(row, column);
+	}
+	
+	//TODO: implement losing behavior
+	public void lose() {
+		
 	}
 }

@@ -1,8 +1,6 @@
 package ui;
 
 import grid.board.Board;
-import grid.cells.GridCell;
-import grid.manager.GridManager;
 
 public class TextUI extends UI{
 	
