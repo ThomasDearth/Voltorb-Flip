@@ -7,6 +7,7 @@ public abstract class UI {
 	
 	public UI() {
 		gridManager = GridManager.getInstance();
+		gridManager.setUI(this);
 	}
 	
 	protected GridManager getManager() {
@@ -14,4 +15,6 @@ public abstract class UI {
 	}
 	
 	public abstract void renderBoard();
+	
+	public abstract void lose();
 }

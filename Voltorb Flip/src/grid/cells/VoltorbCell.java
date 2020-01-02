@@ -19,7 +19,7 @@ public class VoltorbCell extends GridCell {
 		if(getRevealed()) {
 			return 'O';
 		} else {
-			return 'X';
+			return ' ';
 		}
 	}
 

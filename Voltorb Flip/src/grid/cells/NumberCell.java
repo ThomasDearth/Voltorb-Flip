@@ -25,7 +25,7 @@ public class NumberCell extends GridCell {
 		if(getRevealed()) {
 			return (char) (getValue() + 48);	//Moves digit forward in ASCII
 		} else {
-			return 'X';
+			return ' ';
 		}
 	}
 }

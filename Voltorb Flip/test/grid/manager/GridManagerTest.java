@@ -3,7 +3,6 @@ package grid.manager;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.*;
 
-import grid.board.Board;
 import grid.cells.NumberCell;
 import grid.manager.GridManager;
 import ui.TextUI;
@@ -18,6 +17,7 @@ class GridManagerTest {
 	
 	@Test
 	public void testRenderText() {
+		manager.newBoard(6);
 		TextUI ui = new TextUI();
 		assertEquals(0, manager.getScore());
 		System.out.println("Board: unrevealed\nScore: " + manager.getScore());

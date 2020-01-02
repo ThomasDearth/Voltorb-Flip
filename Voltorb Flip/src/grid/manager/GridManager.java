@@ -1,11 +1,13 @@
 package grid.manager;
 
 import grid.board.Board;
+import ui.UI;
 
 public class GridManager {
 	private static GridManager instance;
 	private Board board;
 	private int score;
+	private UI ui;
 	
 	private GridManager() {
 		score = 0;
@@ -21,6 +23,10 @@ public class GridManager {
 
 	public void newBoard(int level) {
 		board = new Board(this, level);
+	}
+	
+	public void setUI(UI ui) {
+		this.ui = ui;
 	}
 	
 	/**Returns the {@link Board} currently in play
@@ -49,6 +55,7 @@ public class GridManager {
 	
 	//TODO: implement losing behavior
 	public void lose() {
-		
+		board.revealBoard();
+		ui.lose();
 	}
 }
