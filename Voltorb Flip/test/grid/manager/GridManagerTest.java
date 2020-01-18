@@ -21,7 +21,7 @@ class GridManagerTest {
 		CLI ui = new CLI();
 		assertEquals(0, manager.getScore());
 		System.out.println("Board: unrevealed\nScore: " + manager.getScore());
-		ui.printBoard();
+		ui.renderBoard();
 		
 		for(int row = 0; row < 5; row++) {
 			for(int col = 0; col < 5; col++) {
@@ -32,6 +32,6 @@ class GridManagerTest {
 			}
 		}
 		System.out.println("\nBoard: revealed\nScore: " + manager.getScore());
-		ui.printBoard();
+		ui.renderBoard();
 	}
 }

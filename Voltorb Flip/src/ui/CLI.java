@@ -9,12 +9,13 @@ public class CLI extends UI {
 	}
 	
 	@Override
-	public void renderNewBoard(int level) {
+	public void newBoard(int level) {
 		getManager().newBoard(level);
-		printBoard();
+		renderBoard();
 	}
 	
-	public void printBoard() {
+	@Override
+	public void renderBoard() {
 		Board board = getManager().getBoard();
 		
 		int[] colOrbs = new int[board.getSize()[1]];
@@ -49,6 +50,6 @@ public class CLI extends UI {
 	@Override
 	public void lose() {
 		System.out.println("You lose!");
-		renderNewBoard(1);
+		newBoard(1);
 	}
 }

@@ -14,7 +14,9 @@ public abstract class UI {
 		return gridManager;
 	}
 	
-	public abstract void renderNewBoard(int level);
+	public abstract void newBoard(int level);
+	
+	public abstract void renderBoard();
 	
 	public abstract void lose();
 }
