@@ -2,14 +2,19 @@ package ui;
 
 import grid.board.Board;
 
-public class TextUI extends UI {
+public class CLI extends UI {
 
-	public TextUI() {
+	public CLI() {
 		super();
 	}
-
+	
 	@Override
-	public void renderBoard() {
+	public void renderNewBoard(int level) {
+		getManager().newBoard(level);
+		printBoard();
+	}
+	
+	public void printBoard() {
 		Board board = getManager().getBoard();
 		
 		int[] colOrbs = new int[board.getSize()[1]];
@@ -44,6 +49,6 @@ public class TextUI extends UI {
 	@Override
 	public void lose() {
 		System.out.println("You lose!");
-		renderBoard();
+		renderNewBoard(1);
 	}
 }

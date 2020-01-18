@@ -25,6 +25,12 @@ public class Board {
 		return manager;
 	}
 
+	/** Gets information about a cell
+	 * 
+	 * @param row the row (starts at 0)
+	 * @param column the column (starts at 0)
+	 * @return the GridCell at the given coordinates
+	 */
 	public GridCell getCell(int row, int column) {
 		return cells[row][column];
 	}
@@ -80,8 +86,7 @@ public class Board {
 		}
 	}
 
-	/**TODO: test this
-	 * Returns information about a row
+	/**Returns information about a row
 	 * 
 	 * @param row the number of the row
 	 * @return an array of {score, voltorbs}
@@ -98,8 +103,7 @@ public class Board {
 		return ret;
 	}
 
-	/**TODO: test this
-	 * Returns information about a column
+	/**Returns information about a column
 	 * 
 	 * @param column the number of the column
 	 * @return an array of {score, voltorbs}

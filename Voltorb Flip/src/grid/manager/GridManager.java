@@ -53,7 +53,6 @@ public class GridManager {
 		board.flipCell(row, column);
 	}
 	
-	//TODO: implement losing behavior
 	public void lose() {
 		board.revealBoard();
 		ui.lose();

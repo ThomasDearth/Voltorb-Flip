@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 import grid.cells.NumberCell;
 import grid.manager.GridManager;
-import ui.TextUI;
+import ui.CLI;
 
 class GridManagerTest {
 	private GridManager manager;
@@ -18,10 +18,10 @@ class GridManagerTest {
 	@Test
 	public void testRenderText() {
 		manager.newBoard(6);
-		TextUI ui = new TextUI();
+		CLI ui = new CLI();
 		assertEquals(0, manager.getScore());
 		System.out.println("Board: unrevealed\nScore: " + manager.getScore());
-		ui.renderBoard();
+		ui.printBoard();
 		
 		for(int row = 0; row < 5; row++) {
 			for(int col = 0; col < 5; col++) {
@@ -32,6 +32,6 @@ class GridManagerTest {
 			}
 		}
 		System.out.println("\nBoard: revealed\nScore: " + manager.getScore());
-		ui.renderBoard();
+		ui.printBoard();
 	}
 }
