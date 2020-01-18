@@ -12,8 +12,7 @@ import grid.cells.GridCell;
 public class TileButton extends Button {
 	private static final long serialVersionUID = -9171289008171628463L;
 	
-	//TODO: fix tileBlank image
-	private static BufferedImage imgBack = GraphicsUtil.makeImage("resources/tileBlank.png");
+	private static BufferedImage imgBack = GraphicsUtil.makeImage("resources/tiles/tileBlank.png");
 	
 	private GridCell cell;
 	private BufferedImage image;

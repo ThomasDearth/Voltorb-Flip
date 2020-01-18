@@ -2,21 +2,21 @@ package ui;
 
 import grid.manager.GridManager;
 
+/**
+ * Abstract class defining what a UI should be able to do.
+ * 
+ * @author Akronoskos
+ *
+ */
 public abstract class UI {
-	private GridManager gridManager;
-	
-	public UI() {
-		gridManager = GridManager.getInstance();
-		gridManager.setUI(this);
-	}
-	
-	protected GridManager getManager() {
-		return gridManager;
-	}
-	
-	public abstract void newBoard(int level);
-	
-	public abstract void renderBoard();
-	
-	public abstract void lose();
+
+  public UI() {
+    GridManager.getInstance().setUI(this);
+  }
+
+  public abstract void newBoard(int level);
+
+  public abstract void renderBoard();
+
+  public abstract void lose();
 }

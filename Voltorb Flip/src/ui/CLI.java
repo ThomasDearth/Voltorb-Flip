@@ -1,6 +1,7 @@
 package ui;
 
 import grid.board.Board;
+import grid.manager.GridManager;
 
 public class CLI extends UI {
 
@@ -10,13 +11,13 @@ public class CLI extends UI {
 	
 	@Override
 	public void newBoard(int level) {
-		getManager().newBoard(level);
+		GridManager.getInstance().newBoard(level);
 		renderBoard();
 	}
 	
 	@Override
 	public void renderBoard() {
-		Board board = getManager().getBoard();
+		Board board = GridManager.getInstance().getBoard();
 		
 		int[] colOrbs = new int[board.getSize()[1]];
 		for(int i = 0; i < board.getSize()[1]; i++) {

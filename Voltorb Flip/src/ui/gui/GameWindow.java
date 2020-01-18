@@ -11,12 +11,12 @@ import javax.swing.SpringLayout;
 public class GameWindow extends Frame {
 	private static final long serialVersionUID = 4732891750003688342L;
 
-	private static final BufferedImage imgBackground = GraphicsUtil.makeImage("resources/boardBlank.png");
+	private static final BufferedImage imgBackground = GraphicsUtil.makeImage("resources/background/boardBackground.png");
 
 	private static SpringLayout layout;
 	
 	public GameWindow() {
-		this.setSize(800, 800);
+		this.setSize(imgBackground.getWidth(), imgBackground.getHeight());
 		this.addWindowListener(new WindowListener() {
 
 			@Override
@@ -76,7 +76,7 @@ public class GameWindow extends Frame {
 	public void addComponents() {
 		TileButton b1 = new TileButton(null);
 		this.add(b1);
-//		layout.putConstraint(SpringLayout.NORTH, b1, 0, SpringLayout.NORTH, this);
-//		layout.putConstraint(SpringLayout.WEST, b1, 0, SpringLayout.WEST, this);
+		layout.putConstraint(SpringLayout.NORTH, b1, 10, SpringLayout.NORTH, this);
+		layout.putConstraint(SpringLayout.WEST, b1, 10, SpringLayout.WEST, this);
 	}
 }

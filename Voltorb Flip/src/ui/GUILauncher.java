@@ -1,27 +1,35 @@
 package ui;
 
+import grid.manager.GridManager;
 import ui.gui.GameWindow;
 
 public class GUILauncher extends UI {
+	private int level;
+	
 	public static void main(String[] args) {
+		new GUILauncher();
+	}
+	
+	public GUILauncher() {
 		new GameWindow();
+		this.level = 1;
+		newBoard(level);
 	}
 
 	@Override
 	public void newBoard(int level) {
-		// TODO Auto-generated method stub
-		
+		GridManager.getInstance().newBoard(level);
+		renderBoard();
 	}
 
 	@Override
 	public void renderBoard() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void lose() {
-		// TODO Auto-generated method stub
+		// TODO implement losing behavior
 		
 	}
 }
