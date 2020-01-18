@@ -18,5 +18,7 @@ public abstract class UI {
 
   public abstract void renderBoard();
 
+  public abstract void win();
+  
   public abstract void lose();
 }

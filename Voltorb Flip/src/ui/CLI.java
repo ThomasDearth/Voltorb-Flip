@@ -11,7 +11,6 @@ public class CLI extends UI {
 	
 	@Override
 	public void newBoard(int level) {
-		GridManager.getInstance().newBoard(level);
 		renderBoard();
 	}
 	
@@ -47,10 +46,14 @@ public class CLI extends UI {
 			System.out.println("---------------------");
 		}
 	}
+	
+	@Override
+	public void win() {
+	  System.out.println("You win! Score: " + GridManager.getInstance().getScore());
+	}
 
 	@Override
 	public void lose() {
 		System.out.println("You lose!");
-		newBoard(1);
 	}
 }

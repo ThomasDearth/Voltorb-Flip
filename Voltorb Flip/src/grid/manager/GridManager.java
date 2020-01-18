@@ -13,16 +13,17 @@ import ui.UI;
 public class GridManager {
   private static GridManager instance;
   private Board board;
+  private int level;
   private int score;
   private UI ui;
 
   private GridManager() {
+    level = 1;
     score = 0;
-    newBoard(1);
   }
 
   /**
-   * Returns the Gridmanager, or creates one if one does not exist. Implements the
+   * Returns the GridManager, or creates one if one does not exist. Implements the
    * Singleton design pattern.
    * 
    * @return the GridManager.
@@ -41,6 +42,7 @@ public class GridManager {
    */
   public void newBoard(int level) {
     board = new Board(level);
+    ui.renderBoard();
   }
 
   /**
@@ -91,6 +93,13 @@ public class GridManager {
    */
   public void flipCell(int row, int column) {
     board.flipCell(row, column);
+  }
+  
+  public void win() {
+    board.revealBoard();
+    level++;
+    ui.win();
+    newBoard(level);
   }
 
   /**
