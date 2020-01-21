@@ -12,7 +12,7 @@ import ui.UI;
  */
 public class GridManager {
   private static GridManager instance;
-  private Board board;
+  private static Board board;
   private int level;
   private int score;
   private UI ui;
