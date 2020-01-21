@@ -17,7 +17,7 @@ class GridManagerTest {
 	
 	@Test
 	public void testRenderText() {
-		manager.newBoard(6);
+		manager.newBoard();
 		CLI ui = new CLI();
 		assertEquals(0, manager.getScore());
 		System.out.println("Board: unrevealed\nScore: " + manager.getScore());

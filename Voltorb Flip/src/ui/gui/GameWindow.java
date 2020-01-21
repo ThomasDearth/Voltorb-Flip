@@ -1,10 +1,7 @@
 package ui.gui;
 
 import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.Graphics;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
@@ -15,11 +12,11 @@ public class GameWindow extends Frame {
 
   /** The icon image of the window. */
   private static final BufferedImage imgIcon = GraphicsUtil.makeImage("resources/tiles/tileVoltorb.png");
-  /** The background of a game of VoltorbFlip. */
-  private static final BufferedImage imgBackground = GraphicsUtil.makeImage("resources/background/boardBackground.png");
 
   /** The layout of the window */
-  private static SpringLayout layout;
+  private SpringLayout layout;
+  /** The area for the tiles */
+  private GameContainer tileSquare;
 
   /** Creates a new game window. Bound to size of background image. */
   public GameWindow() {
@@ -75,33 +72,17 @@ public class GameWindow extends Frame {
 
   /** Updates the appearance of the board */
   public void updateBoard() {
-    // TODO create buttons here
-
-    // Create a background
-    this.setBackground(new Color(25, 128, 95));
-    Background b = new Background();
-    this.add(b);
+    //Create an array of buttons
+    if(tileSquare != null) {
+      this.remove(tileSquare);
+    }
+    tileSquare = new GameContainer();
+    this.add(tileSquare);
 
     // Binds the window size to the preferred size of the background
-    layout.putConstraint(SpringLayout.NORTH, b, 0, SpringLayout.NORTH, this);
-    layout.putConstraint(SpringLayout.WEST, b, 0, SpringLayout.WEST, this);
-    layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, b);
-    layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, b);
-  }
-
-  /** Component containing an image of the background */
-  private class Background extends Container {
-    private static final long serialVersionUID = -4861146958994103107L;
-
-    @Override
-    public void paint(Graphics g) {
-      this.getGraphics().drawImage(imgBackground, 0, 0, null);
-      this.setSize(new Dimension(imgBackground.getWidth(), imgBackground.getHeight()));
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-      return new Dimension(imgBackground.getWidth(), imgBackground.getHeight());
-    }
+    layout.putConstraint(SpringLayout.NORTH, tileSquare, 0, SpringLayout.NORTH, this);
+    layout.putConstraint(SpringLayout.WEST, tileSquare, 0, SpringLayout.WEST, this);
+    layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, tileSquare);
+    layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, tileSquare);
   }
 }

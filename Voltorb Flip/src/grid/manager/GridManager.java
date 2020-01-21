@@ -40,9 +40,8 @@ public class GridManager {
    * 
    * @param level the board's level
    */
-  public void newBoard(int level) {
+  public void newBoard() {
     board = new Board(level);
-    ui.renderBoard();
   }
 
   /**
@@ -60,6 +59,9 @@ public class GridManager {
    * @return the {@link Board} currently in play
    */
   public Board getBoard() {
+    if(board == null) {
+      newBoard();
+    }
     return board;
   }
 
@@ -99,7 +101,7 @@ public class GridManager {
     board.revealBoard();
     level++;
     ui.win();
-    newBoard(level);
+    newBoard();
   }
 
   /**

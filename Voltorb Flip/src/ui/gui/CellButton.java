@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 
 import grid.cells.GridCell;
 
-public class TileButton extends Button {
+public class CellButton extends Button {
   private static final long serialVersionUID = -9171289008171628463L;
 
   private static BufferedImage imgBack = GraphicsUtil.makeImage("resources/tiles/tileBlank.png");
@@ -18,8 +18,8 @@ public class TileButton extends Button {
   private GridCell cell;
   private BufferedImage image;
 
-  public TileButton(GridCell cell) {
-    super("hellooooo");
+  public CellButton(GridCell cell) {
+    super("test");
     this.image = imgBack;
     this.setSize(getPreferredSize());
 
@@ -27,6 +27,7 @@ public class TileButton extends Button {
       @Override
       public void mouseClicked(MouseEvent e) {
         System.out.println("clicked");
+        //TODO: add click behavior
       }
 
       @Override

@@ -24,7 +24,8 @@ public class GUILauncher extends UI {
 
   @Override
   public void newBoard(int level) {
-    GridManager.getInstance().newBoard(level);
+    //TODO: update reference
+    GridManager.getInstance().newBoard();
   }
 
   @Override
