@@ -23,6 +23,7 @@ public class VoltorbCell extends GridCell {
   @Override
   public void select() {
     setRevealed(true);
+    GridManager.getInstance().changeScore(getValue());
     GridManager.getInstance().lose();
   }
 

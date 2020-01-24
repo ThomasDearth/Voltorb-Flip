@@ -1,5 +1,6 @@
 package ui.gui;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -11,7 +12,9 @@ public class GameWindow extends Frame {
 
   /** The icon image of the window. */
   private static final BufferedImage imgIcon = GraphicsUtil.makeImage("resources/tiles/tileVoltorb.png");
-
+  /** The background color of the window. */
+  private static final Color backgroundColor = new Color(24, 122, 90);
+  
   /** The layout of the window */
   private SpringLayout layout;
   /** The area for the tiles */
@@ -21,6 +24,7 @@ public class GameWindow extends Frame {
   public GameWindow() {
     super("Voltorb Flip");
     this.setIconImage(imgIcon);
+    this.setBackground(backgroundColor);
     // Set up listeners
     this.addWindowListener(new WindowListener() {
 
@@ -71,17 +75,20 @@ public class GameWindow extends Frame {
 
   /** Updates the appearance of the board */
   public void updateBoard() {
-    //Create an array of buttons
-    if(tileSquare != null) {
+    // Create an array of buttons
+    if (tileSquare != null) {
       this.remove(tileSquare);
+      tileSquare.createNewCells();
+      this.add(tileSquare);
+    } else {
+      tileSquare = new GameContainer();
+      this.add(tileSquare);
     }
-    tileSquare = new GameContainer();
-    this.add(tileSquare);
 
-    // Binds the window size to the preferred size of the background
-    layout.putConstraint(SpringLayout.NORTH, tileSquare, 0, SpringLayout.NORTH, this);
-    layout.putConstraint(SpringLayout.WEST, tileSquare, 0, SpringLayout.WEST, this);
-    layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, tileSquare);
-    layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, tileSquare);
+      // Binds the window size to the preferred size of the background
+      layout.putConstraint(SpringLayout.NORTH, tileSquare, 0, SpringLayout.NORTH, this);
+      layout.putConstraint(SpringLayout.WEST, tileSquare, 0, SpringLayout.WEST, this);
+      layout.putConstraint(SpringLayout.SOUTH, this, 0, SpringLayout.SOUTH, tileSquare);
+      layout.putConstraint(SpringLayout.EAST, this, 0, SpringLayout.EAST, tileSquare);
   }
 }

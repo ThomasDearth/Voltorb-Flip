@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.concurrent.TimeUnit;
+
 import grid.manager.GridManager;
 import ui.gui.GameWindow;
 
@@ -15,7 +17,7 @@ public class GUILauncher extends UI {
   public static void main(String[] args) {
     GUILauncher launcher = new GUILauncher();
     GridManager.getInstance().setUI(launcher);
-    launcher.newBoard(1);
+    launcher.newBoard();
   }
 
   public GUILauncher() {
@@ -23,7 +25,7 @@ public class GUILauncher extends UI {
   }
 
   @Override
-  public void newBoard(int level) {
+  public void newBoard() {
     GridManager.getInstance().newBoard();
   }
 
@@ -35,11 +37,18 @@ public class GUILauncher extends UI {
   @Override
   public void win() {
     // TODO implement winning behavior
+    System.out.println("You win!");
   }
 
   @Override
   public void lose() {
     // TODO implement losing behavior
-
+    System.out.println("Whoops! Good game!");
+    try {
+      TimeUnit.SECONDS.sleep(1);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    renderBoard();
   }
 }

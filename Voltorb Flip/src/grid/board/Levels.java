@@ -20,7 +20,7 @@ public class Levels {
 	/**
 	 * Returns an array containing information about a level
 	 * 
-	 * @param level the number of the level played
+	 * @param level the number of the level played [1 to 8]
 	 * @return an array with the format [2s, 3s, Voltorbs]
 	 */
 	public static int[] getTiles(int level) {

@@ -14,7 +14,7 @@ public abstract class UI {
     GridManager.getInstance().setUI(this);
   }
 
-  public abstract void newBoard(int level);
+  public abstract void newBoard();
 
   public abstract void renderBoard();
 

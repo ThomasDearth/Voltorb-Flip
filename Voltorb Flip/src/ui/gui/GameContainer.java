@@ -33,11 +33,9 @@ public class GameContainer extends Container {
     this.manager = GridManager.getInstance();
     int[] dims = manager.getBoard().getSize();
     this.grid = new CellButton[dims[0]][dims[1]];
-    this.layout = new SpringLayout();
-    this.setLayout(layout);
 
     // Make a new board
-    createCells();
+    createNewCells();
   }
 
   @Override
@@ -51,9 +49,22 @@ public class GameContainer extends Container {
     return new Dimension(imgBackground.getWidth(), imgBackground.getHeight());
   }
 
-  public void createCells() {
+  public void createNewCells() {
+    this.setVisible(false);
+    this.layout = new SpringLayout();
+    this.setLayout(layout);
+
     manager.newBoard();
     Board board = manager.getBoard();
+
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        if (grid[i][j] != null) {
+          this.remove(grid[i][j]);
+          grid[i][j] = null;
+        }
+      }
+    }
 
     // Create the first cell
     grid[0][0] = new CellButton(board.getCell(0, 0));
@@ -61,14 +72,14 @@ public class GameContainer extends Container {
     this.layout.putConstraint(SpringLayout.NORTH, grid[0][0], Y_OFFSET, SpringLayout.NORTH, this);
     this.layout.putConstraint(SpringLayout.WEST, grid[0][0], X_OFFSET, SpringLayout.WEST, this);
 
-    //Create the first row
-    for(int col = 1; col < grid[0].length; col++) {
+    // Create the first row
+    for (int col = 1; col < grid[0].length; col++) {
       grid[0][col] = new CellButton(board.getCell(0, col));
       this.add(grid[0][col]);
       this.layout.putConstraint(SpringLayout.NORTH, grid[0][col], Y_OFFSET, SpringLayout.NORTH, this);
-      this.layout.putConstraint(SpringLayout.WEST, grid[0][col], CELL_DIST, SpringLayout.EAST, grid[0][col-1]);
+      this.layout.putConstraint(SpringLayout.WEST, grid[0][col], CELL_DIST, SpringLayout.EAST, grid[0][col - 1]);
     }
-    
+
     // Create other rows below them
     for (int row = 1; row < grid.length; row++) {
       // Create a new cell
@@ -83,9 +94,12 @@ public class GameContainer extends Container {
       for (int col = 1; col < grid[0].length; col++) {
         grid[row][col] = new CellButton(board.getCell(row, col));
         this.add(grid[row][col]);
-        this.layout.putConstraint(SpringLayout.NORTH, grid[row][col], CELL_DIST, SpringLayout.SOUTH, grid[row - 1][col]);
+        this.layout.putConstraint(SpringLayout.NORTH, grid[row][col], CELL_DIST, SpringLayout.SOUTH,
+            grid[row - 1][col]);
         this.layout.putConstraint(SpringLayout.WEST, grid[row][col], CELL_DIST, SpringLayout.EAST, grid[row][col - 1]);
       }
     }
+    this.setVisible(true);
+    this.doLayout();
   }
 }

@@ -59,7 +59,7 @@ public class GridManager {
    * @return the {@link Board} currently in play
    */
   public Board getBoard() {
-    if(board == null) {
+    if (board == null) {
       newBoard();
     }
     return board;
@@ -96,7 +96,12 @@ public class GridManager {
   public void flipCell(int row, int column) {
     board.flipCell(row, column);
   }
-  
+
+  /** Returns the current level. */
+  public int getLevel() {
+    return level;
+  }
+
   public void win() {
     board.revealBoard();
     level++;

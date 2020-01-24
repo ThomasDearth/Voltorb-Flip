@@ -10,8 +10,8 @@ public class CLI extends UI {
 	}
 	
 	@Override
-	public void newBoard(int level) {
-		renderBoard();
+	public void newBoard() {
+		GridManager.getInstance().getBoard();
 	}
 	
 	@Override
