@@ -50,7 +50,7 @@ public class Board {
    */
   private void initializeBoard(int level) {
     Random random = new Random();
-    int[] contents = Levels.getTiles(level);
+    int[] contents = Levels.getInstance().getTiles(level);
     cells = new GridCell[ROWS][COLUMNS];
 
     while (contents[0] > 0 | contents[1] > 0 | contents[2] > 0) {
