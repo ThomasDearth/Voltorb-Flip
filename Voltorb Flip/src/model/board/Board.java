@@ -3,6 +3,7 @@ package model.board;
 import java.util.Random;
 
 import exception.CannotPlaceTileException;
+import model.Constants;
 import model.tile.Tile;
 
 /**
@@ -12,14 +13,14 @@ import model.tile.Tile;
  *
  */
 public class Board {
-  private static final int ROWS = 5;
-  private static final int COLUMNS = 5;
+  private static final int ROWS = Constants.ROWS;
+  private static final int COLUMNS = Constants.COLUMNS;
 
   /** An array of tiles found on the board, in row-major order */
   private Tile[][] grid;
   /** The current score of the board */
   private int score;
-
+  /**The number of obtainable points on the board.*/
   private int goal;
 
   /**
@@ -107,6 +108,10 @@ public class Board {
   public int getTileScore(int row, int column) {
     return grid[row][column].getPoints();
   }
+  
+  public Tile getTile(int row, int column) {
+    return grid[row][column];
+  }
 
   /**
    * Selects a tile at the given coordinates, starting at the upper left corner
@@ -125,8 +130,10 @@ public class Board {
       } else {
         score *= multiplier;
       }
-      // TODO: implement winning check
-//      checkClear();
+      if(score == goal) {
+        //TODO: implement winning behavior
+        System.out.println("You win!");
+      }
     }
   }
 
@@ -138,7 +145,6 @@ public class Board {
    *         number of 0s
    */
   public int[] getRowInfo(int row) {
-    //TODO: test method
     int[] ret = {0, 0};
     for(int col = 0; col < COLUMNS; col++) {
       if(getTileScore(row, col) == 0) {
@@ -158,7 +164,7 @@ public class Board {
    *         number of 0s
    */
   public int[] getColumnInfo(int col) {
-    // TODO: test method
+    // TODO: test this method
     int[] ret = {0,0};
     for(int row = 0; row < ROWS; row++) {
       if(getTileScore(row, col) == 0) {
@@ -177,7 +183,7 @@ public class Board {
       for (int col = 0; col < COLUMNS; col++) {
         System.out.print(getTileScore(row, col) + "   ");
       }
-      System.out.println("\n");
+      System.out.println(getRowInfo(row)[0] + " " + getRowInfo(row)[1] + "\n");
     }
   }
 }
